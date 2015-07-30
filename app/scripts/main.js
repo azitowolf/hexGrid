@@ -1,28 +1,47 @@
-//planning
-
 // input form allows user to choose between layouts - basic or circle + size + straight or offset orientation
 
+var $targetDiv = $(".hexGrid");
 var $input = $('#layoutDropdown');
-var $board = $('.board');
-var $dropDown = $('.dropdown-menu');
-var renderType = 'Circle';
+var $layoutDropDown = $('#dropdown-menu-layout');
+var $rowsDropDown = $('#dropdown-menu-rows');
+var $columnsDropDown = $('#dropdown-menu-columns');
+var $renderBtn = $('#renderBtn');
+var gridHeight = 1;
+var gridWidth = 1;
+var layout = '';
 
-$dropDown.on('click', 'a', function(event) {
+$layoutDropDown.on('click', 'a', function(event) {
   event.preventDefault();
   var $t = $(this);
   var text = $t.text();
+  layout = text;
   $input.html('');
   $input.html(text);
-  var layout = text;
-
-  $('.marketing').html('');
-  $('.marketing').append(renderGrid(layout));
-
 });
 
-var render = function() {
+$rowsDropDown.on('click', 'a', function(event) {
+  event.preventDefault();
+  var $t = $(this);
+  var number = $t.text();
+  $('#rowsDropDown').html('Width: ' + number);
+  gridWidth = number;
+});
 
-};
+$columnsDropDown.on('click', 'a', function(event) {
+  event.preventDefault();
+  var $t = $(this);
+  var number = $t.text();
+  $('#columnsDropDown').html('Height: ' + number);
+  gridHeight = number;
+});
+
+$renderBtn.click(function(event) {
+  event.preventDefault();
+  $targetDiv.html('');
+  layout === 'Circular' ? $targetDiv.append(renderCircleGrid(1)) : $targetDiv.append(renderStandardGrid(gridWidth, gridHeight))
+});
+
+//Render Functions
 
 var renderHex = function(even, hidden) {
   var classes = even ? hidden ? 'even filler' : 'even' : hidden ? 'filler ' : '';
@@ -49,38 +68,35 @@ var renderRow = function(length, inverse, offset) {
   return rowStart + html + rowEnd;
 }
 
-
-
-var renderGrid = function(layout) {
-
+var renderStandardGrid = function(rows, columns) {
   var html = '';
-  if (layout === 'Circular') {
-
-    html += renderRow(1, true, true);
-    html += renderRow(3, false, false);
-    html += renderRow(3, false, false);
-
-
-
-  } else {
-
-    html += renderRow(5, false, false);
-    html += renderRow(5, false, false);
-    html += renderRow(5, false, false);
-    html += renderRow(5, false, false);
-
-  }
-
-
-
-
-
+  var i = 0;
+  while (i < columns) {
+    html += renderRow(rows, false, false)
+    i++;
+  };
   var containerOpen = '<div class="board col-sm-offset-1 col-sm-10">';
   var containerClose = '</div>'
-
   return containerOpen + html + containerClose;
 };
 
-
-
-// $('.marketing').append(renderGrid());
+var renderCircleGrid = function(size) {
+  var html = '';
+  switch (size) {
+    case 1:
+      html += renderRow(1, true, true);
+      html += renderRow(3, false, false);
+      html += renderRow(3, false, false);
+      break;
+    case 2:
+      html += renderRow(3, true, true);
+      html += renderRow(5, false, false);
+      html += renderRow(5, false, false);
+      html += renderRow(5, false, false);
+      html += renderRow(3, true, true);
+      break;
+  }
+  var containerOpen = '<div class="board col-sm-offset-1 col-sm-10">';
+  var containerClose = '</div>'
+  return containerOpen + html + containerClose;
+};
