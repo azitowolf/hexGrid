@@ -1,6 +1,6 @@
 Gruntfile.js
 bower.json
-
+app
 bower_components
 test
 .yo-rc.json
