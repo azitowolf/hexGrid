@@ -75,7 +75,7 @@ var renderStandardGrid = function(rows, columns) {
     html += renderRow(rows, false, false)
     i++;
   };
-  var containerOpen = '<div class="board col-sm-offset-1 col-sm-10">';
+  var containerOpen = '<div class="board">';
   var containerClose = '</div>'
   return containerOpen + html + containerClose;
 };
@@ -96,7 +96,14 @@ var renderCircleGrid = function(size) {
       html += renderRow(3, true, true);
       break;
   }
-  var containerOpen = '<div class="board col-sm-offset-1 col-sm-10">';
+  var containerOpen = '<div class="board">';
   var containerClose = '</div>'
   return containerOpen + html + containerClose;
 };
+
+var renderGrid = function(layout) {
+  layout === 'Circular' ? $targetDiv.append(renderCircleGrid(1)) : $targetDiv.append(renderStandardGrid(gridWidth, gridHeight))
+}
+
+
+$targetDiv.append(renderStandardGrid(5, 3));

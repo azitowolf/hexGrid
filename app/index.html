@@ -32,18 +32,18 @@
       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a href="https://github.com/azitowolf/hexGrid">Source</a></li>
+          <li id="learnMoreBtn"><a href="#learnMore">About</a></li>
           <li><a href="http://alexzitowolf.com">Contact Me</a></li>
         </ul>
         <h3 class="text-muted">hexGrid demo</h3>
       </div>
 
       <div class="jumbotron">
-        <h1>Hexgrid Demo</h1>
-
-        <p><a class="btn btn-lg btn-warning" href="https://github.com/azitowolf/hexGrid">Download<span class="glyphicon glyphicon-cloud-download"></span></a></p>
+        <h1>Hexgrid</h1>
+        <p><a class="btn btn-lg btn-warning" href="https://github.com/azitowolf/hexGrid/archive/master.zip" download>Download<span class="glyphicon glyphicon-cloud-download"></span></a></p>
       </div>
 
-      <ul class="nav nav-pills">
+      <ul class="nav nav-pills renderControls">
 
         <li role="presentation" class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" id="layoutDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -100,7 +100,23 @@
 
       <div class="row hexGrid"></div>
 
-
+      <div class ="learnMore" id="learnMore">
+        <h3>How to use:</h3>
+        <div class="list-group">
+          <a href="#" class="list-group-item active">
+            <h4 class="list-group-item-heading">1. Download the sourcefiles.</h4>
+            <p class="list-group-item-text">Include Main.js and also main.scss in your index.html. All the SCSS is written in basic CSS so you don't need to compile it down you can just change the filetype.</p>
+          </a>
+          <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading"> 2. Create a div and add the class "hexGrid" to it.</h4>
+            <p class="list-group-item-text">It's that simple.</p>
+          </a>
+          <a href="#" class="list-group-item">
+            <h4 class="list-group-item-heading">3. renderGrid('layout', rows, columns)</h4>
+            <p class="list-group-item-text">Arguments: <br>layout(string)- 'Circular' or 'Standard'<br> rows(number)<br> columns(disabled for Circular grid - number)</p>
+          </a>
+        </div>
+      </div>
 
       <div class="footer">
         <p><span class="glyphicon glyphicon-heart"></span> <a href="http://github.com/azitowolf">@azitowolf</a> in Boston</p>
