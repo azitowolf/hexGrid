@@ -38,7 +38,7 @@ $columnsDropDown.on('click', 'a', function(event) {
 $renderBtn.click(function(event) {
   event.preventDefault();
   $targetDiv.html('');
-  layout === 'Circular' ? $targetDiv.append(renderCircleGrid(1)) : $targetDiv.append(renderStandardGrid(gridWidth, gridHeight))
+  layout === 'Circular' ? $targetDiv.append(renderCircleGrid(1)) : $targetDiv.append(renderStandardGrid(gridWidth, gridHeight));
 });
 
 //Render Functions
@@ -48,7 +48,7 @@ var renderHex = function(even, hidden) {
   var html = "<div class='hex " + classes +
     "'><div class='hex-left'></div><div class='hex-middle'></div><div class='hex-right'></div></div>";
   return html;
-}
+};
 
 var renderRow = function(length, inverse, offset) {
   var html = '';
@@ -72,11 +72,11 @@ var renderStandardGrid = function(rows, columns) {
   var html = '';
   var i = 0;
   while (i < columns) {
-    html += renderRow(rows, false, false)
+    html += renderRow(rows, false, false);
     i++;
   };
   var containerOpen = '<div class="board">';
-  var containerClose = '</div>'
+  var containerClose = '</div>';
   return containerOpen + html + containerClose;
 };
 
